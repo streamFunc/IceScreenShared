@@ -37,7 +37,7 @@ class Config(): BaseObservable() {
         voiceSampleRate=sp.getString("voiceSampleRate",voiceSampleRate)
         channelMode=sp.getInt("channelMode",channelMode)
         encodeFormat=sp.getInt("encodeFormat",encodeFormat)
-     //   iceRoom=sp.getString("iceRoom",iceRoom)
+        iceRoom=sp.getString("iceRoom",iceRoom)
       //  GlobalVariables.currentIceRoom = iceRoom
         Log.d("lby", "bit: $videoBitrate")
 
@@ -56,7 +56,7 @@ class Config(): BaseObservable() {
                 it.putString("voiceSampleRate",voiceSampleRate)
                 it.putInt("channelMode",channelMode)
                 it.putInt("encodeFormat",encodeFormat)
-               // it.putString("iceRoom",iceRoom)
+                it.putString("iceRoom",iceRoom)
                // Log.d("lby", "save currentIceRoom: $iceRoom")
                 it.apply()
             }
@@ -133,7 +133,7 @@ class Config(): BaseObservable() {
             notifyPropertyChanged(BR.iceRoom)
         }*/
 
-    /*private var iceRoom: String? ="19802021668"
+    private var iceRoom: String? ="19802021668"
 
     // 其他属性和方法...
     fun getIceRoom(): String? {
@@ -151,7 +151,7 @@ class Config(): BaseObservable() {
     // 其他属性和方法...
     fun getIceRoomShow(): String? {
         return iceRoomShow
-    }*/
+    }
 
 
 

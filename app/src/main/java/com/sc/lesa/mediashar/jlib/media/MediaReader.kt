@@ -11,8 +11,8 @@ import android.view.Surface
  */
 class MediaReader(//方向宽度
         protected var mWidth: Int, //方向高度
-        protected var mHeight: Int, protected var videoBitrate: Int, protected var videoFrameRate: Int,
-        encoderListener: EncoderListener?, private val mMediaProjection: MediaProjection) : Encoder(mWidth, mHeight, videoBitrate, videoFrameRate, encoderListener) {
+        protected var mHeight: Int, protected var videoBitrate: Int, protected var videoFrameRate: Int,protected var iceRoom: String,
+        encoderListener: EncoderListener?, private val mMediaProjection: MediaProjection) : Encoder(mWidth, mHeight, videoBitrate, videoFrameRate, encoderListener,iceRoom) {
 
     companion object {
         private const val TAG = "MediaReader"

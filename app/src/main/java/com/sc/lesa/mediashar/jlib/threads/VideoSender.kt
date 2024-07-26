@@ -18,11 +18,11 @@ import com.sc.lesa.mediashar.jlib.server.SocketServerThread
  */
 class VideoSender(var socketServerThread: SocketServerThread, mp: MediaProjection,
                   var width: Int, var height: Int,
-                  var videoBitrate: Int, var videoFrameRate: Int
+                  var videoBitrate: Int, var videoFrameRate: Int,var iceRoom: String
 ) : EncoderListener {
     val TAG = VideoSender::class.java.name
     var mediaReader: MediaReader = MediaReader(width, height, videoBitrate,
-            videoFrameRate, this, mp)
+            videoFrameRate,iceRoom, this, mp)
 
     override fun onH264(buffer: ByteArray, type: Int, ts: Long) {
         val datas = ByteArray(buffer.size)

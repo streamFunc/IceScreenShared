@@ -48,7 +48,7 @@ class MediaReaderService : Service(){
          try {
             videoSender=VideoSender(socketServerThread, myApplication.mediaProjection,
                 config.width.toInt(), config.height.toInt(),
-                config.videoBitrate.toInt(), config.videoFrameRate.toInt()
+                config.videoBitrate.toInt(), config.videoFrameRate.toInt(),config.getIceRoom().toString()
             )
             voiceSender = VoiceSender(socketServerThread,
                  config.channelMode, config.encodeFormat, config.channelCount.toInt(),
