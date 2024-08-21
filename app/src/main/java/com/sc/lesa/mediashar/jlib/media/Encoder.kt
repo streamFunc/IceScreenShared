@@ -10,6 +10,7 @@ import hole.Hole
 import java.net.Inet4Address
 import java.net.NetworkInterface
 import java.nio.ByteBuffer
+//import rtmpSdk.RtmpSdk
 
 /**
  * Created by Lesa on 2018/12/03.
@@ -71,8 +72,9 @@ open class Encoder(private val videoW: Int, private val videoH: Int, private val
 
         iceRoom = "caller$iceRoom"
         Log.d("myTest", "room:$iceRoom")
+        iceRoom = "whatever"
 
-
+      //RtmpSdk.startConnect("rtmp://47.92.86.188/live/test")
        Hole.startConnect("","47.92.86.188:9090","turn://admin:123456@47.92.86.188","ctrl",iceRoom)
        // Hole.startConnect("","45.63.59.254:9090","turn://appcrash:testonly@45.63.59.254","ctrl","whatever")
     }
@@ -101,6 +103,7 @@ open class Encoder(private val videoW: Int, private val videoH: Int, private val
                       //  Log.d("myTest", "receive data...")
                       //  fos.write(outData);
                         Hole.startSendH264ByteQueue(iceRoom,outData)
+                       // RtmpSdk.startPush(outData)
                        /* if(httpRequestOk){
                             clientRtp.sendH264Packet(outData)
                         }*/
@@ -113,9 +116,7 @@ open class Encoder(private val videoW: Int, private val videoH: Int, private val
                        // Log.d("myTest", "receive key frame data...")
                        // fos.write(keyframe)
                         Hole.startSendH264ByteQueue(iceRoom,keyframe)
-                      /*  if(httpRequestOk){
-                            clientRtp.sendH264Packet(keyframe)
-                        }*/
+                      //  RtmpSdk.startPush(keyframe)
                         encoderListener!!.onH264(keyframe, 1, mBufferInfo.presentationTimeUs)
                     } else {
                         //其他帧末
@@ -125,6 +126,7 @@ open class Encoder(private val videoW: Int, private val videoH: Int, private val
                       /*  if(httpRequestOk){
                             clientRtp.sendH264Packet(outData)
                         }*/
+                        //RtmpSdk.startPush(outData)
                         encoderListener!!.onH264(outData, 2, mBufferInfo.presentationTimeUs)
                     }
                     codec.releaseOutputBuffer(outputBufferIndex, false)
@@ -150,6 +152,7 @@ open class Encoder(private val videoW: Int, private val videoH: Int, private val
         encoderListener?.onCloseH264()
         encoderListener = null
         Hole.stopConnect(iceRoom)
+        //RtmpSdk.stopConnect()
        // clientRtp.close()
     }
 
