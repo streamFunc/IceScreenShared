@@ -151,13 +151,14 @@ open class Encoder(private val videoW: Int, private val videoH: Int, private val
         codec.release()
         encoderListener?.onCloseH264()
         encoderListener = null
-        Hole.stopConnect(iceRoom)
         //RtmpSdk.stopConnect()
        // clientRtp.close()
     }
 
 
     fun exit() {
+        Log.d("myTest", "lby stopConnect...")
+        Hole.stopConnect(iceRoom)
         exit = true
     }
 
